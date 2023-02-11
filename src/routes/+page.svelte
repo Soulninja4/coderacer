@@ -16,6 +16,7 @@
   var wordIndex = 0
   var letterIndex = 0
   var correctLetters = 0
+  var lettersTyped = 0
 
   var wpm = tweened(0, { delay: 300, duration: 1000 } )
   var accuracy = tweened(0, { delay: 1300, duration: 1000 } )
@@ -39,6 +40,7 @@
     wordIndex = 0
     letterIndex = 0
     correctLetters = 0
+    lettersTyped = 0
 
     $wpm = 0
     $accuracy = 0
@@ -54,7 +56,7 @@
 
   function getAccuracy() {
     const totalLetters = getTotalLetters(words)
-    return Math.floor(correctLetters / totalLetters * 100)
+    return Math.floor(correctLetters / lettersTyped * 100)
   }
 
   function getTotalLetters(words: Word[]) {
@@ -132,6 +134,7 @@
 
   function nextLetter() {
     letterIndex+= 1
+    lettersTyped += 1
   }
 
   function updateLine() {
